@@ -22,4 +22,5 @@ go build -o pomodoro main.go
 
 ## Requirements
 
-- Go 1.18+
+- [Go](https://go.dev) 1.18+
+- [terminal-notifier](https://github.com/julienXX/terminal-notifier)
