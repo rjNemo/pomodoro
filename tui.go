@@ -48,9 +48,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, nil
 	case TickMsg:
 		if m.progress.Percent() == 1.0 {
-			cmd := exec.Command("terminal-notifier", "-title", "Timer Complete", "-message", m.name, "-sound", "Crystal")
+
+			cmd := exec.Command("terminal-notifier",
+				"-title", "Timer Complete",
+				"-message", m.name,
+				"-ignoreDnD",
+			)
 			if err := cmd.Run(); err != nil {
-				log.Fatal(err)
+				log.Printf("error sending notification: %v", err)
 			}
 			return m, tea.Quit
 		}
